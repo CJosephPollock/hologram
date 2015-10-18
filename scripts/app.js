@@ -21,6 +21,9 @@ var filters = [
   ''
 ];
 
+var captureButton = document.getElementById('capture');
+var starter = document.getElementById('starter');
+
 function changeFilter(el) {
   el.className = '';
   var effect = filters[idx++ % filters.length];
@@ -84,8 +87,8 @@ function capture() {
     var sign = Math.floor(Math.random() * 2) ? 1 : -1;
     img.style.transform = 'rotateZ(' + (sign * angle) + 'deg)';
 
-    var maxLeft = document.body.clientWidth;
-    var maxTop = document.body.clientHeight;
+    var maxLeft = window.innerWidth;
+    var maxTop = window.innerHeight;
 
     img.style.top = Math.floor(Math.random() * maxTop) + 'px';
     img.style.left = Math.floor(Math.random() * maxLeft) + 'px';
@@ -94,16 +97,21 @@ function capture() {
   }, 150);
 }
 
-function upload() {
-
-}
-
-function init(el) {
+function init() {
   if (!navigator.getUserMedia) {
     document.getElementById('errorMessage').innerHTML = 'Sorry. <code>navigator.getUserMedia()</code> is not available.';
     return;
   }
-  el.onclick = capture;
-  el.textContent = 'Snapshot';
+
   navigator.getUserMedia({video: true}, gotStream, noStream);
+  document.body.classList.add('running');
 }
+
+
+starter.addEventListener( 'click', function( event ) {
+  init();
+}, false );
+
+captureButton.addEventListener( 'click', function( event ) {
+  capture();
+}, false );

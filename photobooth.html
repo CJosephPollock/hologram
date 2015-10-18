@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<link rel="stylesheet" href="styles/build/style.css">
-<title>Photobooth</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/build/style.css">
+    <title>Photobooth</title>
+
 </head>
 <body>
-<article>
- <h1>Hologram</h1>
- <section id="app">
-  <div class="container"><span id="live">LIVE</span><video id="monitor" autoplay="" onclick="changeFilter(this)" title="Click me to see different filters"></video></div>
-  <p>Click the video to see different CSS filters</p>
- </section>
- <p><button onclick="init(this)">Snapshot</button></p>
- <div id="splash" hidden="">
-  <p id="errorMessage">↑<br>Click to begin</p>
- </div>
- <div id="gallery"></div>
-</article>
-<canvas id="canvas" style="display:none" width="0" height="0"></canvas>
-<script src="scripts/build/app.js"></script>
+
+    <article>
+        <h1>Hologram</h1>
+        <section id="app" class="app">
+            <div class="container">
+                <div id="starter" class="starter"></div>
+                <span id="live" class="live">LIVE</span>
+                <video id="monitor" class="monitor" autoplay="" title="Click me to see different filters"></video>
+            </div>
+        </section>
+        <p><button id="capture" class="capture">Snapshot</button></p>
+
+        <div id="splash" class="splash" hidden="">
+        <p id="errorMessage" class="error">↑<br>Click to begin</p>
+        </div>
+
+        <div id="gallery" class="gallery"></div>
+    </article>
+
+    <canvas id="canvas" class="canvas" style="display:none" width="0" height="0"></canvas>
+    <script src="scripts/build/app.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-@keyframes glowRed {
+@keyframes recGlow {
   from {
     box-shadow: rgba(255, 0, 0, 0) 0 0 0;
   }
@@ -7,6 +7,18 @@
   }
   to {
     box-shadow: rgba(255, 0, 0, 0) 0 0 0;
+  }
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 1px 1px 1px red;
+  }
+  50% {
+    text-shadow: 1px 1px 3px red;
+  }
+  to {
+    text-shadow: 1px 1px 1px red;
   }
 }
 
@@ -27,40 +39,69 @@ body {
 article {
   text-align: center;
 }
-#monitor {
-  height: 300px;
-  border-radius: 4px;
+.starter {
+    position: absolute;
+    top: 0;
+    height: 450px;
+    width: 100%;
+
+    .running & {
+        display: none;
+    }
 }
-#live {
-  position: absolute;
-  z-index: 1;
-  color: white;
-  font-weight: 600;
-  font-family: sans-serif;
-  font-size: 16pt;
-  right: 35px;
-  top: 20px;
-  text-shadow: 1px 1px 1px red;
-  letter-spacing: 1px;
+.monitor {
+    height: 450px;
+    max-width: 100%;
+    border-radius: 4px;
+    background-color: #111;
+    pointer-events: none;
+
+    .running & {
+        pointer-events: auto;
+    }
 }
-#live:before {
-  content: '';
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  background: red;
-  position: absolute;
-  left: -20px;
-  margin-top: 5px;
-  animation: glowRed 0.75s linear infinite;
+.live {
+    display: none;
+    animation: textGlow 1.25s linear infinite;
+    position: absolute;
+    z-index: 1;
+    color: white;
+    font-weight: 600;
+    font-family: sans-serif;
+    font-size: 16pt;
+    right: 35px;
+    top: 20px;
+    text-shadow: 1px 1px 1px red;
+    letter-spacing: 1px;
+
+    &:before {
+        content: '';
+        animation: recGlow 1.25s linear infinite;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        background: red;
+        position: absolute;
+        left: -20px;
+        margin-top: 5px;
+    }
+
+    .running & {
+        display: block;
+    }
 }
-#gallery img {
+
+.capture {
+    display: none;
+
+    .running & {
+        display: inline;
+    }
+}
+
+.gallery img {
   position: absolute;
   z-index: -1;
-  height: 75px;
-}
-#gallery img {
-  float: left;
   height: 75px;
 }
 .container {

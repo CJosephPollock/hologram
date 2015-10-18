@@ -3,7 +3,8 @@
 var gulp       = require('gulp'),
 	postcss    = require('gulp-postcss'),
 	uglify     = require('gulp-uglify'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    livereload = require('gulp-livereload');
 
 var paths = {
 	styles:  ['styles/style.css'],
@@ -22,7 +23,8 @@ gulp.task('styles', function() {
 		.pipe(sourcemaps.init())
 			.pipe(postcss(processors))
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('styles/build/'));
+		.pipe(gulp.dest('styles/build/'))
+        .pipe(livereload());
 });
 
 gulp.task('scripts', function() {
@@ -30,12 +32,14 @@ gulp.task('scripts', function() {
 		.pipe(sourcemaps.init())
 			.pipe(uglify())
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('scripts/build/'));
+		.pipe(gulp.dest('scripts/build/'))
+        .pipe(livereload());
 });
 
 gulp.task('watch', function() {
 	gulp.watch(paths.styles, ['styles']);
 	gulp.watch(paths.scripts, ['scripts']);
+    livereload.listen();
 });
 
 // Workflows
@@ -43,4 +47,4 @@ gulp.task('watch', function() {
 gulp.task('default', ['styles', 'scripts', 'watch']);
 
 // $ gulp build: Builds, prefixes, and minifies CSS files; concencates and minifies JS files. For deployments.
-gulp.task('build', ['styles', 'scripts', 'sitemap']);
+gulp.task('build', ['styles', 'scripts']);
