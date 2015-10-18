@@ -2,6 +2,8 @@
     --basecolor: #0C242E;
     --accentcolor: #0C242E;
     --holoblue: #00E2E2;
+
+    --app-border-radius: 20px 20px 0 0;
 }
 
 @keyframes recGlow {
@@ -70,7 +72,7 @@ header {
 
 .container {
     position: relative;
-    border-radius: 10px 10px 0 0;
+    border-radius: var(--app-border-radius);;
     overflow: hidden;
     box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.25);
 }
@@ -84,7 +86,7 @@ header {
     background-color: var(--basecolor);
     color: white;
     text-align: center;
-    border-radius: 10px 10px 0 0;
+    border-radius: var(--app-border-radius);
 
     h2 {
         transition: transform 0.1s ease;
@@ -115,7 +117,7 @@ header {
     min-width: 100%;
     min-height: 100%;
     background-color: black;
-    border-radius: 10px 10px 0 0;
+    border-radius: var(--app-border-radius);
 
     .running & {
         pointer-events: auto;
@@ -160,7 +162,7 @@ header {
     min-width: 100%;
     min-height: 100%;
     text-align: center;
-    border-radius: 10px 10px 0 0;
+    border-radius: var(--app-border-radius);
 
     &.loaded {
         display: block;
