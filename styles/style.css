@@ -1,24 +1,30 @@
+:root {
+    --basecolor: #0C242E;
+    --accentcolor: #0C242E;
+    --holoblue: #00E2E2;
+}
+
 @keyframes recGlow {
   from {
-    box-shadow: rgba(255, 0, 0, 0) 0 0 0;
+    box-shadow: rgba(255, 0, 0, 1) 0 0 1px;
   }
   50% {
-    box-shadow: rgba(255, 0, 0, 1) 0 0 7px 1px;
+    box-shadow: rgba(255, 0, 0, 1) 0 0 5px 1px;
   }
   to {
-    box-shadow: rgba(255, 0, 0, 0) 0 0 0;
+    box-shadow: rgba(255, 0, 0, 1) 0 0 1px;
   }
 }
 
 @keyframes textGlow {
   from {
-    text-shadow: 1px 1px 1px red;
+    text-shadow: 0 0 1px red;
   }
   50% {
     text-shadow: 1px 1px 3px red;
   }
   to {
-    text-shadow: 1px 1px 1px red;
+    text-shadow: 0 0 1px red;
   }
 }
 
@@ -29,10 +35,6 @@ html {
 
 *, *:before, *:after {
 	box-sizing: inherit;
-}
-
-:root {
-    --basecolor: #0C242E;
 }
 
 body {
@@ -67,7 +69,6 @@ header {
 }
 
 .container {
-    background-color: var(--basecolor);
     position: relative;
     border-radius: 10px 10px 0 0;
     overflow: hidden;
@@ -120,6 +121,7 @@ header {
         pointer-events: auto;
     }
 }
+
 .live {
     display: none;
     animation: textGlow 1.25s linear infinite;
@@ -151,12 +153,36 @@ header {
     }
 }
 
+.graph {
+    display: none;
+    position: absolute;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+
+    &.loaded {
+        display: block;
+    }
+
+    .graph-loaded & {
+        background-color: rgba(12, 36, 46, 0.8);
+    }
+
+    svg {
+        height: 100% !important;
+        width: 100% !important;
+    }
+}
+
 .capture {
     display: none;
+    transition: transform 0.25s ease;
     background: url(/images/capture.png) center no-repeat white;
     background-size: contain;
-    width: 3rem;
-    height: 3rem;
+    width: 4rem;
+    height: 4rem;
     padding: 25px;
     position: fixed;
     bottom: 5%;
@@ -166,15 +192,30 @@ header {
     border: none;
     border-radius: 50%;
     cursor: pointer;
+    transform: scale(0.8);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
 
     .running & {
         display: inline;
     }
+
+    &:hover {
+        transform: scale(1);
+    }
+
+    &:focus {
+        outline: none;
+    }
 }
 
-.gallery img {
-    position: absolute;
-    z-index: -1;
-    height: 75px;
+.node {
+  fill: var(--holoblue);
+  stroke: white;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: white;
+  stroke-opacity: .6;
+  stroke-width: 1.5px;
 }

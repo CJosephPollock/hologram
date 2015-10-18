@@ -8,7 +8,7 @@ var gulp       = require('gulp'),
 
 var paths = {
 	styles:  ['styles/style.css'],
-	scripts: ['scripts/app.js']
+	scripts: ['scripts/*.js']
 };
 
 var processors = [

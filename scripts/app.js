@@ -4,9 +4,8 @@ window.URL = window.URL || window.webkitURL;
 var app = document.getElementById('app');
 var video = document.getElementById('monitor');
 var canvas = document.getElementById('canvas');
-var effect = document.getElementById('effect');
-var gallery = document.getElementById('gallery');
-var captureButton = document.getElementById('capture');
+var graph = document.getElementById('graph');
+var capture = document.getElementById('capture');
 var starter = document.getElementById('starter');
 var ctx = canvas.getContext('2d');
 var intervalId = null;
@@ -50,31 +49,6 @@ function noStream(e) {
   document.getElementById('errorMessage').textContent = msg;
 }
 
-function capture() {
-  if (intervalId) {
-    clearInterval(intervalId);
-    intervalId = null;
-    return;
-  }
-
-  intervalId = setInterval(function() {
-    var snapImage = ctx.drawImage(video, 0, 0);
-    var img = document.createElement('img');
-    img.src = canvas.toDataURL('image/webp');
-
-    var angle = Math.floor(Math.random() * 36);
-    var sign = Math.floor(Math.random() * 2) ? 1 : -1;
-    img.style.transform = 'rotateZ(' + (sign * angle) + 'deg)';
-
-    var maxLeft = window.innerWidth;
-    var maxTop = window.innerHeight;
-
-    img.style.top = Math.floor(Math.random() * maxTop) + 'px';
-    img.style.left = Math.floor(Math.random() * maxLeft) + 'px';
-
-    gallery.appendChild(img);
-  }, 150);
-}
 
 function init() {
   if (!navigator.getUserMedia) {
@@ -87,10 +61,15 @@ function init() {
 }
 
 
+function loadGraph() {
+    graph.classList.add('loaded');
+}
+
 starter.addEventListener( 'click', function( event ) {
   init();
 }, false );
 
-captureButton.addEventListener( 'click', function( event ) {
-  capture();
+capture.addEventListener( 'click', function( event ) {
+  loadGraph();
+  document.body.classList.add('graph-loaded');
 }, false );

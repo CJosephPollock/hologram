@@ -5,7 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles/build/style.css">
-    <title>Photobooth</title>
+    <link rel="icon" href="/images/icon.png">
+    <title>Hologram</title>
 
 </head>
 <body>
@@ -17,9 +18,12 @@
             <div class="monitor-container">
                 <video id="monitor" class="monitor" autoplay=""></video>
             </div>
+
             <div id="starter" class="starter">
                 <h2>Allow webcam access and scan graph.</h2>
             </div>
+
+            <div id="graph" class="graph"></div>
         </div>
         <button id="capture" class="capture">Capture</button>
     </section>
@@ -28,10 +32,10 @@
     <p id="errorMessage" class="error">↑<br>Click to begin</p>
     </div>
 
-    <div id="gallery" class="gallery"></div>
-
     <canvas id="canvas" class="canvas" style="display:none" width="0" height="0"></canvas>
     <script src="scripts/build/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="scripts/build/graphs.js"></script>
 
 </body>
 </html>
