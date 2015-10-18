@@ -1,0 +1,30 @@
+{
+  "name": "hologram",
+  "version": "0.0.1",
+  "description": "https://scottshar.es/photobooth.html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CJosephPollock/hologram.git"
+  },
+  "author": "Will Strimling, Joe Pollock, Scott Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CJosephPollock/hologram/issues"
+  },
+  "homepage": "https://github.com/CJosephPollock/hologram#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.0.3",
+    "cssnano": "^3.3.1",
+    "gulp": "^3.9.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-postcss": "^6.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.2",
+    "postcss-custom-properties": "^5.0.0",
+    "postcss-nested": "^1.0.0"
+  }
+}

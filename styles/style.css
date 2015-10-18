@@ -1,0 +1,104 @@
+@keyframes glowRed {
+  from {
+    box-shadow: rgba(255, 0, 0, 0) 0 0 0;
+  }
+  50% {
+    box-shadow: rgba(255, 0, 0, 1) 0 0 15px 1px;
+  }
+  to {
+    box-shadow: rgba(255, 0, 0, 0) 0 0 0;
+  }
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #222;
+  color: white;
+  margin: 0;
+}
+article {
+  text-align: center;
+}
+#monitor {
+  height: 300px;
+  border-radius: 4px;
+}
+#live {
+  position: absolute;
+  z-index: 1;
+  color: white;
+  font-weight: 600;
+  font-family: sans-serif;
+  font-size: 16pt;
+  right: 35px;
+  top: 20px;
+  text-shadow: 1px 1px 1px red;
+  letter-spacing: 1px;
+}
+#live:before {
+  content: '';
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background: red;
+  position: absolute;
+  left: -20px;
+  margin-top: 5px;
+  animation: glowRed 0.75s linear infinite;
+}
+#gallery img {
+  position: absolute;
+  z-index: -1;
+  height: 75px;
+}
+#gallery img {
+  float: left;
+  height: 75px;
+}
+.container {
+  background-color: #222;
+  display: inline-block;
+  position: relative;
+}
+h1 {
+  font-weight: 300;
+}
+
+.blur {
+  filter: blur(3px);
+}
+.brightness {
+  filter: brightness(5);
+}
+.contrast {
+  filter: contrast(8);
+}
+.hue-rotate {
+  filter: hue-rotate(90deg);
+}
+.hue-rotate2 {
+  filter: hue-rotate(180deg);
+}
+.hue-rotate3 {
+  filter: hue-rotate(270deg);
+}
+.saturate {
+  filter: saturate(10);
+}
+.grayscale {
+  filter: grayscale(1);
+}
+.sepia {
+  filter: sepia(1);
+}
+.invert {
+  filter: invert(1);
+}
