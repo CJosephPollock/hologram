@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/build/style.css">
+    <title>Photobooth</title>
+
+</head>
+<body>
+
+    <header><h1>Hologram</h1></header>
+    <section id="app" class="app">
+        <div class="container">
+            <span id="live" class="live">LIVE</span>
+            <div class="monitor-container">
+                <video id="monitor" class="monitor" autoplay=""></video>
+            </div>
+            <div id="starter" class="starter">
+                <h2>Allow webcam access and scan graph.</h2>
+            </div>
+        </div>
+        <button id="capture" class="capture">Capture</button>
+    </section>
+
+    <div id="splash" class="splash" hidden="">
+    <p id="errorMessage" class="error">↑<br>Click to begin</p>
+    </div>
+
+    <div id="gallery" class="gallery"></div>
+
+    <canvas id="canvas" class="canvas" style="display:none" width="0" height="0"></canvas>
+    <script src="scripts/build/app.js"></script>
+
+</body>
+</html>

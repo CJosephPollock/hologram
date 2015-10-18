@@ -6,31 +6,10 @@ var video = document.getElementById('monitor');
 var canvas = document.getElementById('canvas');
 var effect = document.getElementById('effect');
 var gallery = document.getElementById('gallery');
-var ctx = canvas.getContext('2d');
-var intervalId = null;
-var idx = 0;
-var filters = [
-  'grayscale',
-  'sepia',
-  'blur',
-  'brightness',
-  'contrast',
-  'hue-rotate', 'hue-rotate2', 'hue-rotate3',
-  'saturate',
-  'invert',
-  ''
-];
-
 var captureButton = document.getElementById('capture');
 var starter = document.getElementById('starter');
-
-function changeFilter(el) {
-  el.className = '';
-  var effect = filters[idx++ % filters.length];
-  if (effect) {
-    el.classList.add(effect);
-  }
-}
+var ctx = canvas.getContext('2d');
+var intervalId = null;
 
 function gotStream(stream) {
   if (window.URL) {

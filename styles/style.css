@@ -3,7 +3,7 @@
     box-shadow: rgba(255, 0, 0, 0) 0 0 0;
   }
   50% {
-    box-shadow: rgba(255, 0, 0, 1) 0 0 15px 1px;
+    box-shadow: rgba(255, 0, 0, 1) 0 0 7px 1px;
   }
   to {
     box-shadow: rgba(255, 0, 0, 0) 0 0 0;
@@ -24,38 +24,98 @@
 
 html {
 	box-sizing: border-box;
+    height: 100%;
 }
 
 *, *:before, *:after {
 	box-sizing: inherit;
 }
 
+:root {
+    --basecolor: #0C242E;
+}
+
 body {
-  font-family: sans-serif;
-  background-color: #222;
-  color: white;
-  margin: 0;
+    font-family: sans-serif;
+    background-color: white;
+    color: var(--basecolor);
+    margin: 0;
 }
 article {
-  text-align: center;
+    text-align: center;
 }
-.starter {
-    position: absolute;
-    top: 0;
-    height: 450px;
-    width: 100%;
 
-    .running & {
-        display: none;
+h1 {
+    font-weight: 400;
+}
+
+h2 {
+    font-weight: 300;
+}
+
+header {
+    padding: 0.75em 0;
+    background-color: white;
+
+    h1 {
+        height: 50px;
+        background: url(/images/mark.png) center no-repeat;
+        background-size: contain;
+        text-indent: -9999em;
+        margin: 0;
     }
 }
+
+.container {
+    background-color: var(--basecolor);
+    position: relative;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.25);
+}
+
+.starter {
+    transition: background-color 2.5s ease;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--basecolor);
+    color: white;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+
+    h2 {
+        transition: transform 0.1s ease;
+        position: relative;
+        top: 2.5%;
+        width: 100%;
+    }
+
+    .running & {
+        background-color: transparent;
+        pointer-events: none;
+
+        h2 {
+            transform: scaleX(1.5) scaleY(0);
+        }
+    }
+}
+
+.monitor-container {
+    height: calc(100vh - 50px - 1.5em);
+    width: 100vw;
+    overflow: hidden;
+}
+
 .monitor {
-    height: 450px;
-    max-width: 100%;
-    border-radius: 4px;
-    background-color: #111;
-    pointer-events: none;
     transform: rotateY(-180deg);
+    pointer-events: none;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: black;
+    border-radius: 10px 10px 0 0;
+
     .running & {
         pointer-events: auto;
     }
@@ -93,6 +153,20 @@ article {
 
 .capture {
     display: none;
+    background: url(/images/capture.png) center no-repeat white;
+    background-size: contain;
+    width: 3rem;
+    height: 3rem;
+    padding: 25px;
+    position: fixed;
+    bottom: 5%;
+    left: calc(50% - 1.5rem);
+    z-index: 2;
+    text-indent: -9999em;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
 
     .running & {
         display: inline;
@@ -100,46 +174,7 @@ article {
 }
 
 .gallery img {
-  position: absolute;
-  z-index: -1;
-  height: 75px;
-}
-.container {
-  background-color: #222;
-  display: inline-block;
-  position: relative;
-}
-h1 {
-  font-weight: 300;
-}
-
-.blur {
-  filter: blur(3px);
-}
-.brightness {
-  filter: brightness(5);
-}
-.contrast {
-  filter: contrast(8);
-}
-.hue-rotate {
-  filter: hue-rotate(90deg);
-}
-.hue-rotate2 {
-  filter: hue-rotate(180deg);
-}
-.hue-rotate3 {
-  filter: hue-rotate(270deg);
-}
-.saturate {
-  filter: saturate(10);
-}
-.grayscale {
-  filter: grayscale(1);
-}
-.sepia {
-  filter: sepia(1);
-}
-.invert {
-  filter: invert(1);
+    position: absolute;
+    z-index: -1;
+    height: 75px;
 }
