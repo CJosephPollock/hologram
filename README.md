@@ -1,3 +1,3 @@
 # Hologram
 
-https://scottshar.es/photobooth.html
+https://scottshar.es/hologram
